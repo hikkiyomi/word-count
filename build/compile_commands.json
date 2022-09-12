@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe -Wall -Wextra -Wuninitialized -Wshadow -Wno-unused-result -std=c++17 -g -o CMakeFiles\\labwork1.dir\\main.cpp.obj -c C:\\ProgrammingWorkspace\\itmo_learning\\prog_basics\\labwork-1-hikkiyomi\\main.cpp",
+  "file": "C:\\ProgrammingWorkspace\\itmo_learning\\prog_basics\\labwork-1-hikkiyomi\\main.cpp"
+}
+]

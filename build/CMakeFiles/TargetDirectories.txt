@@ -1,0 +1,3 @@
+C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build/CMakeFiles/labwork1.dir
+C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build/CMakeFiles/edit_cache.dir
+C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build/CMakeFiles/rebuild_cache.dir
