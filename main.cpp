@@ -18,7 +18,7 @@ void helpCommand() {
     std::cout << "Output format: lines words bytes filename" << std::endl << std::endl;
 }
 
-void throwUnknownOptionException(std::string optionName) {
+void throwUnknownOptionException(const std::string& optionName) {
     std::cout << "Unknown option -- " << optionName << std::endl;
     std::cout << "Try '.\\WordCount --help' to see more information" << std::endl;
     std::cout << std::endl;
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        if (arg.size() > 2 && arg[0] == '-' && arg[1] == '-') {
+        if ((int)arg.size() > 2 && arg[0] == '-' && arg[1] == '-') {
             std::string optionName = arg.substr(2);
 
             if (optionName == "lines") {
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
 
             continue;
         }
-        else if (arg.size() > 1 && arg[0] == '-') {
+        else if ((int)arg.size() > 1 && arg[0] == '-') {
             for (int j = 1; j < (int)arg.size(); ++j) {
                 char optionName = arg[j];
 
