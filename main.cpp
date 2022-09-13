@@ -18,8 +18,21 @@ void helpCommand() {
     std::cout << "Output format: lines words bytes filename" << std::endl << std::endl;
 }
 
+void throwUnknownOptionException(std::string optionName) {
+    std::cout << "Unknown option -- " << optionName << std::endl;
+    std::cout << "Try '.\\WordCount --help' to see more information" << std::endl;
+    std::cout << std::endl;
+    std::cout << "If you're putting a file which name starts with '-', try .\\filename" << std::endl;
+    std::cout << std::endl;
+}
+
 int main(int argc, char* argv[]) {
-    std::vector<std::string> args;
+    std::vector<std::string> files;
+
+    bool printLines = false;
+    bool printBytes = false;
+    bool printWords = false;
+    bool printChars = false;
 
     for (int i = 1; i < argc; ++i) {
         std::string arg = std::string(argv[i]);
@@ -29,7 +42,54 @@ int main(int argc, char* argv[]) {
             return 0;
         }
 
-        args.emplace_back(arg);
+        if (arg.size() > 2 && arg[0] == '-' && arg[1] == '-') {
+            std::string optionName = arg.substr(2);
+
+            if (optionName == "lines") {
+                printLines = true;
+            }
+            else if (optionName == "bytes") {
+                printBytes = true;
+            }
+            else if (optionName == "words") {
+                printWords = true;
+            }
+            else if (optionName == "chars") {
+                printChars = true;
+            }
+            else {
+                throwUnknownOptionException(optionName);
+                return 0;
+            }
+
+            continue;
+        }
+        else if (arg.size() > 1 && arg[0] == '-') {
+            for (int j = 1; j < (int)arg.size(); ++j) {
+                char optionName = arg[j];
+
+                if (optionName == 'l') {
+                    printLines = true;
+                }
+                else if (optionName == 'c') {
+                    printBytes = true;
+                }
+                else if (optionName == 'w') {
+                    printWords = true;
+                }
+                else if (optionName == 'm') {
+                    printChars = true;
+                }
+                else {
+                    throwUnknownOptionException(std::string(1, optionName));
+                    return 0;
+                }
+            }
+
+            continue;
+        }
+
+        files.emplace_back(arg);
     }
 
     return 0;
