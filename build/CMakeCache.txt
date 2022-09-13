@@ -153,7 +153,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=labwork1
+CMAKE_PROJECT_NAME:STATIC=WordCount
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -249,6 +249,15 @@ CMAKE_STRIP:FILEPATH=C:/msys64/mingw64/bin/strip.exe
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//Value Computed by CMake
+WordCount_BINARY_DIR:STATIC=C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build
+
+//Value Computed by CMake
+WordCount_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+WordCount_SOURCE_DIR:STATIC=C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi
 
 //Value Computed by CMake
 labwork-1-hikkiyomi_BINARY_DIR:STATIC=C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build

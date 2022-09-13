@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "labwork1.exe"
+			"path" : "WordCount.exe"
 		},
 		{
-			"path" : "labwork1.pdb"
+			"path" : "WordCount.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -48,7 +48,7 @@
 			]
 		}
 	],
-	"id" : "labwork1::@6890427a1f51a3e7e1df",
+	"id" : "WordCount::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -68,8 +68,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "labwork1",
-	"nameOnDisk" : "labwork1.exe",
+	"name" : "WordCount",
+	"nameOnDisk" : "WordCount.exe",
 	"paths" : 
 	{
 		"build" : ".",

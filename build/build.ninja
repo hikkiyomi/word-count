@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: labwork1
+# Project: WordCount
 # Configurations: Debug
 # =============================================================================
 
@@ -41,37 +41,37 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = C$:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build/
 # =============================================================================
-# Object build statements for EXECUTABLE target labwork1
+# Object build statements for EXECUTABLE target WordCount
 
 
 #############################################
-# Order-only phony target for labwork1
+# Order-only phony target for WordCount
 
-build cmake_object_order_depends_target_labwork1: phony || CMakeFiles/labwork1.dir
+build cmake_object_order_depends_target_WordCount: phony || CMakeFiles/WordCount.dir
 
-build CMakeFiles/labwork1.dir/main.cpp.obj: CXX_COMPILER__labwork1_Debug C$:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/main.cpp || cmake_object_order_depends_target_labwork1
-  DEP_FILE = CMakeFiles\labwork1.dir\main.cpp.obj.d
+build CMakeFiles/WordCount.dir/main.cpp.obj: CXX_COMPILER__WordCount_Debug C$:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/main.cpp || cmake_object_order_depends_target_WordCount
+  DEP_FILE = CMakeFiles\WordCount.dir\main.cpp.obj.d
   FLAGS = -Wall -Wextra -Wuninitialized -Wshadow -Wno-unused-result -std=c++17 -g
-  OBJECT_DIR = CMakeFiles\labwork1.dir
-  OBJECT_FILE_DIR = CMakeFiles\labwork1.dir
+  OBJECT_DIR = CMakeFiles\WordCount.dir
+  OBJECT_FILE_DIR = CMakeFiles\WordCount.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target labwork1
+# Link build statements for EXECUTABLE target WordCount
 
 
 #############################################
-# Link the executable labwork1.exe
+# Link the executable WordCount.exe
 
-build labwork1.exe: CXX_EXECUTABLE_LINKER__labwork1_Debug CMakeFiles/labwork1.dir/main.cpp.obj
+build WordCount.exe: CXX_EXECUTABLE_LINKER__WordCount_Debug CMakeFiles/WordCount.dir/main.cpp.obj
   FLAGS = -Wall -Wextra -Wuninitialized -Wshadow -Wno-unused-result -std=c++17 -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\labwork1.dir
+  OBJECT_DIR = CMakeFiles\WordCount.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = labwork1.exe
-  TARGET_IMPLIB = liblabwork1.dll.a
-  TARGET_PDB = labwork1.exe.dbg
+  TARGET_FILE = WordCount.exe
+  TARGET_IMPLIB = libWordCount.dll.a
+  TARGET_PDB = WordCount.exe.dbg
 
 
 #############################################
@@ -100,7 +100,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
-build labwork1: phony labwork1.exe
+build WordCount: phony WordCount.exe
 
 # =============================================================================
 # Folder targets.
@@ -110,7 +110,7 @@ build labwork1: phony labwork1.exe
 #############################################
 # Folder: C:/ProgrammingWorkspace/itmo_learning/prog_basics/labwork-1-hikkiyomi/build
 
-build all: phony labwork1.exe
+build all: phony WordCount.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

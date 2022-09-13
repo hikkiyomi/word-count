@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "labwork1",
+					"name" : "WordCount",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "labwork1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-labwork1-Debug-093bee0bbcebcff30e0f.json",
-					"name" : "labwork1",
+					"id" : "WordCount::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-WordCount-Debug-e6b1561a6c8de426776b.json",
+					"name" : "WordCount",
 					"projectIndex" : 0
 				}
 			]
