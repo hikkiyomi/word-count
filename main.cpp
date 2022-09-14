@@ -4,6 +4,20 @@
 #include <vector>
 #include <fstream>
 
+void throwUnknownOptionException(const std::string& optionName) {
+    std::cerr << "Unknown option -- " << optionName << std::endl;
+    std::cerr << "Try '.\\WordCount --help' to see more information" << std::endl;
+    std::cerr << std::endl;
+    std::cerr << "If you're putting a file which name starts with '-', try .\\filename" << std::endl;
+    std::cerr << std::endl;
+    exit(1);
+}
+
+void throwUnknownFileException(const std::string& filePath) {
+    std::cerr << filePath << ": no such file or directory";
+    exit(1);
+}
+
 void helpCommand() {
     std::cout << "Usage: .\\WordCount [OPTION]... [FILES]..." << std::endl << std::endl;
 
@@ -20,20 +34,6 @@ void helpCommand() {
     std::cout << "Output format (with options): lines words bytes chars filename" << std::endl << std::endl;
 }
 
-void throwUnknownOptionException(const std::string& optionName) {
-    std::cout << "Unknown option -- " << optionName << std::endl;
-    std::cout << "Try '.\\WordCount --help' to see more information" << std::endl;
-    std::cout << std::endl;
-    std::cout << "If you're putting a file which name starts with '-', try .\\filename" << std::endl;
-    std::cout << std::endl;
-    exit(0);
-}
-
-void throwUnknownFileException(const std::string& filePath) {
-    std::cout << filePath << ": no such file or directory";
-    exit(0);
-}
-
 int countLines(std::ifstream& file) {
     char currentChar;
     int counter = 0;
@@ -44,7 +44,7 @@ int countLines(std::ifstream& file) {
         }
     }
 
-    return counter + 1;
+    return counter;
 }
 
 void printResults(const std::vector<int>& results, const std::string& filePath) {
@@ -150,6 +150,12 @@ int main(int argc, char* argv[]) {
         printLines = true;
         printWords = true;
         printBytes = true;
+    }
+
+    if (files.empty()) {
+        std::cerr << "No files provided" << std::endl;
+        std::cerr << "Try '.\\WordCount --help' for more information" << std::endl;
+        return 1;
     }
 
     for (const std::string& filePath : files) {
