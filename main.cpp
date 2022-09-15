@@ -14,7 +14,8 @@ void throwUnknownOptionException(const std::string& optionName) {
 }
 
 void throwUnknownFileException(const std::string& filePath) {
-    std::cerr << filePath << ": no such file or directory";
+    std::cerr << filePath << ": no such file or directory" << std::endl;
+    std::cerr << std::endl;
     exit(1);
 }
 
@@ -177,9 +178,21 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    std::vector<int> overallResults(4);
+
     for (const std::string& filePath : files) {
-        processFile(filePath, printLines, printWords, printBytes, printChars);
+        std::vector<int> fileResults = processFile(filePath, printLines, printWords, printBytes, printChars);
+        
+        for (int i = 0; i < 4; ++i) {
+            overallResults[i] += fileResults[i];
+        }
     }
+
+    if ((int)files.size() > 1) {
+        printResults(overallResults, "total");
+    }
+
+    std::cout << std::endl;
 
     return 0;
 }
