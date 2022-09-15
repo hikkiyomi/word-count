@@ -25,55 +25,74 @@ void helpCommand() {
     
     std::cout << std::left << std::setw(20) << "-l, --lines" << "print the line counts" << std::endl;
     std::cout << std::left << std::setw(20) << "-w, --words" << "print the word counts" << std::endl;
-    std::cout << std::left << std::setw(20) << "-c, --bytes" << "print the bytes counts" << std::endl;
     std::cout << std::left << std::setw(20) << "-m, --chars" << "print the character counts" << std::endl;
+    std::cout << std::left << std::setw(20) << "-c, --bytes" << "print the bytes counts" << std::endl;
     std::cout << std::left << std::setw(20) << "    --help" << "print help list" << std::endl;
 
     std::cout << std::endl;
     std::cout << "Output format (without options): lines words bytes filename" << std::endl;
-    std::cout << "Output format (with options): lines words bytes chars filename" << std::endl << std::endl;
-}
-
-int countLines(std::ifstream& file) {
-    char currentChar;
-    int counter = 0;
-
-    while (file.get(currentChar)) {
-        if (currentChar == '\n') {
-            ++counter;
-        }
-    }
-
-    return counter;
+    std::cout << "Output format (with options): lines words chars bytes filename" << std::endl << std::endl;
 }
 
 void printResults(const std::vector<int>& results, const std::string& filePath) {
     for (auto result : results) {
+        if (result < 0) continue;
         std::cout << result << " ";
     }
 
     std::cout << filePath << std::endl;
 }
 
+std::vector<int> analyzeFile(std::ifstream& file) {
+    std::vector<int> countResults(4);
+    const int LINES = 0, WORDS = 1, CHARS = 2, BYTES = 3;
+
+    char currentChar;
+    int currentWordLength = 0;
+
+    while (file.get(currentChar)) {
+        if (currentChar == '\n') {
+            ++countResults[LINES];
+        }
+
+        if (!std::isspace(currentChar)) {
+            ++currentWordLength;
+        }
+        else {
+            if (currentWordLength) ++countResults[WORDS];
+            currentWordLength = 0;
+        }
+
+        ++countResults[CHARS];
+    }
+
+    if (currentWordLength) {
+        ++countResults[WORDS];
+    }
+
+    countResults[BYTES] = countResults[CHARS];
+
+    return countResults;
+}
+
 std::vector<int> processFile(const std::string& filePath,
                  const bool& printLines,
                  const bool& printWords,
-                 const bool& printBytes,
-                 const bool& printChars
+                 const bool& printChars,
+                 const bool& printBytes
 ) {
-    std::ifstream file(filePath);
-    std::vector<int> countResults;
+    std::ifstream file(filePath, std::ios::binary);
 
     if (!file.is_open()) {
         throwUnknownFileException(filePath);
     }
 
-    if (printLines) {
-        int result = countLines(file);
-        countResults.emplace_back(result);
-    }
+    std::vector<int> countResults = analyzeFile(file);
 
-    // TODO: other counters
+    if (!printLines) countResults[0] = -1;
+    if (!printWords) countResults[1] = -1;
+    if (!printChars) countResults[2] = -1;
+    if (!printBytes) countResults[3] = -1;
 
     file.close();
 
@@ -87,8 +106,8 @@ int main(int argc, char* argv[]) {
 
     bool printLines = false;
     bool printWords = false;
-    bool printBytes = false;
     bool printChars = false;
+    bool printBytes = false;
 
     for (int i = 1; i < argc; ++i) {
         std::string arg = std::string(argv[i]);
@@ -107,11 +126,11 @@ int main(int argc, char* argv[]) {
             else if (optionName == "words") {
                 printWords = true;
             }
-            else if (optionName == "bytes") {
-                printBytes = true;
-            }
             else if (optionName == "chars") {
                 printChars = true;
+            }
+            else if (optionName == "bytes") {
+                printBytes = true;
             }
             else {
                 throwUnknownOptionException(optionName);
@@ -129,11 +148,11 @@ int main(int argc, char* argv[]) {
                 else if (optionName == 'w') {
                     printWords = true;
                 }
-                else if (optionName == 'c') {
-                    printBytes = true;
-                }
                 else if (optionName == 'm') {
                     printChars = true;
+                }
+                else if (optionName == 'c') {
+                    printBytes = true;
                 }
                 else {
                     throwUnknownOptionException(std::string(1, optionName));
@@ -146,7 +165,7 @@ int main(int argc, char* argv[]) {
         files.emplace_back(arg);
     }
 
-    if (!printLines && !printWords && !printBytes && !printChars) {
+    if (!printLines && !printWords && !printChars && !printBytes) {
         printLines = true;
         printWords = true;
         printBytes = true;
