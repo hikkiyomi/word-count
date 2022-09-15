@@ -71,7 +71,7 @@ std::vector<int> analyzeFile(std::ifstream& file) {
         ++countResults[WORDS];
     }
 
-    countResults[BYTES] = countResults[CHARS];
+    countResults[BYTES] = countResults[CHARS]; // because we reached an agreement to use only ASCII symbols
 
     return countResults;
 }
