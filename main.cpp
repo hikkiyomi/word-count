@@ -65,7 +65,7 @@ bool UpdateOptions(PrintOptions& options, const std::string& arg) {
 
         return true;
     } else if (arg.size() > 1 && arg[0] == '-') {
-        for (int j = 1; j < arg.size(); ++j) {
+        for (size_t j = 1; j < arg.size(); ++j) {
             char option_name = arg[j];
 
             if (option_name == 'l') {
@@ -118,7 +118,7 @@ std::vector<int> AnalyzeFile(std::ifstream& file) {
     const int kLines = 0, kWords = 1, kChars = 2, kBytes = 3;
 
     char current_char;
-    int current_word_length = 0;
+    size_t current_word_length = 0;
 
     while (file.get(current_char)) {
         if (current_char == '\n') {
